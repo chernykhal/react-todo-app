@@ -22,7 +22,7 @@ const Tasks = () => {
                         </label>
 
                     </div>
-                    <input type="text" value="ReactJS Hooks (useState, useReducer, useEffect и т.д.)"/>
+                    {/*<input type="text" value="ReactJS Hooks (useState, useReducer, useEffect и т.д.)"/>*/}
                 </div>
             </div>
         </div>
