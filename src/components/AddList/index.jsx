@@ -43,6 +43,8 @@ const AddList = ({colors, onAdd}) => {
             onClose()
         }).finally(() => {
             setIsLoading(false)
+        }).catch(()=>{
+            alert("Ошибка при добавлении списка")
         })
     }
 
@@ -76,7 +78,7 @@ const AddList = ({colors, onAdd}) => {
                                                      color={color.name}></Badge>)
                     }
                 </div>
-                <button onClick={addList} className="button">{isLoading ? "Добавление..." : "Добавить"}</button>
+                <button onClick={addList} className="button" disabled={isLoading}>{isLoading ? "Добавление..." : "Добавить"}</button>
             </div>}
         </div>
 
