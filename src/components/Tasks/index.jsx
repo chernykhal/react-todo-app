@@ -8,7 +8,7 @@ import editSvg from '../../assets/img/edit.svg';
 
 import "./Tasks.scss";
 
-const Tasks = ({list, onEditTitle, onAddTask}) => {
+const Tasks = ({list, onEditTitle, onAddTask, withoutEmpty}) => {
     const editTitle = () => {
         const newTitle = window.prompt('Название папки', list.name)
         if (newTitle) {
@@ -23,12 +23,12 @@ const Tasks = ({list, onEditTitle, onAddTask}) => {
 
     return (
         <div className="tasks">
-            <h2 className="tasks__title">{list.name}
+            <h2 style={{color: list.color.hex}} className="tasks__title">{list.name}
                 <img onClick={editTitle} src={editSvg} alt="Изменить название"/>
             </h2>
 
             <div className="tasks__items">
-                {!list.tasks.length && <h2>Задачи отсутствуют</h2>}
+                {!withoutEmpty && !list.tasks.length && <h2>Задачи отсутствуют</h2>}
                 {
                     list.tasks.map(task => <div key={task.id} className="tasks__items-row">
                         <div className="checkbox">
@@ -42,11 +42,11 @@ const Tasks = ({list, onEditTitle, onAddTask}) => {
                                 </svg>
                             </label>
                         </div>
-                        <input readOnly type="text" value={task.text} />
+                        <input readOnly type="text" value={task.text}/>
                     </div>)
                 }
             </div>
-                <AddTask list={list} onAddTask={onAddTask}></AddTask>
+            <AddTask list={list} onAddTask={onAddTask}></AddTask>
         </div>
     );
 };
